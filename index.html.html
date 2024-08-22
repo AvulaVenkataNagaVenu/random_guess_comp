@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Guess</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        body {
+            background: url('https://wallup.net/wp-content/uploads/mixed/All_Math_Formula_Picture.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            
+            background-color: rgba(255, 255, 255, 0.268);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+        }
+        h1 {
+            font-weight: bold;
+            color: #087ff6;
+        }
+        .card {
+            background-color: #08f60800;
+            border: none;
+        }
+        .card-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-title img {
+            margin-left: 10px;
+            width: 30px;
+            height: 30px;
+        }
+        .form-control {
+            background: url('https://deanneedham.files.wordpress.com/2012/10/the-games-logo.jpg') no-repeat right 10px center;
+            background-size: 25px;
+            padding-right: 40px;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .alert-primary {
+            background-color: #ff440007;
+            color: #ffffff28;
+        }
+        .alert-success {
+            color: #d3262600;
+        }
+        #result img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container text-center">
+        <div class="alert alert-primary" role="alert">
+            <h1>Random Guess</h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Input Your Number between 1 to 100
+                        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/Maths-HD-Wallpapers-Image.jpg" alt="Guess Icon">
+                    </h5>
+                    <input type="number" id="user-input" class="form-control" min="1" max="100">
+                    <button class="btn btn-primary mt-2" id="submit" onclick="guess_num()">Submit Guess</button>
+                </div>
+                <div id="result" class="mt-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let randomnumber = Math.floor(Math.random() * 101);
+        function guess_num() {
+            let result = document.getElementById('result');
+            let submit = document.getElementById('submit');
+            const guess = Number(document.getElementById('user-input').value);
+            console.log(guess);
+            if (guess === randomnumber) {
+                result.innerHTML = '<p>Success! You guessed it!</p><img src="https://hotsigns.net/assets/images/emogee%20247.png" alt="Success">';
+                result.className = 'alert alert-success';
+                submit.disabled = true;
+                console.log('Success');
+            } else if (guess < randomnumber) {
+                result.innerHTML = 'Small'
+                result.className = 'alert alert-danger';
+                console.log('Small');
+            } else {
+                result.innerHTML = 'Large'
+                result.className = 'alert alert-danger';
+                console.log('Large');
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
